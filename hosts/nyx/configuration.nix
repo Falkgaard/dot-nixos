@@ -111,7 +111,7 @@
    #############################################################################################
 
    time.timeZone = "Europe/Malta";
-   i18n.font     = "Lat2-Terminus32";
+   console.font  = "Lat2-Terminus32";
  
    programs.firefox.enable = true;
    programs.fish.enable    = true;

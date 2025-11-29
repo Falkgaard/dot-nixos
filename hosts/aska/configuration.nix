@@ -76,8 +76,7 @@
    };
 
    time.timeZone = "Europe/Malta";
-   i18n.font = "Lat2-Terminus32";
-  #console.keyMap = "sv-latin1";
+   console.font  = "Lat2-Terminus32";
 
    programs.fish.enable = true;
    programs.firefox.enable = true;
