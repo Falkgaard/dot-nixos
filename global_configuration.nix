@@ -5,6 +5,8 @@
       # Make `falk` a global user:
       ./users/falk
    ];
+
+   nixpkgs.config.allowUnfree = true;
    
    nix.settings.trusted-users         = [ "falk" ];
    nix.settings.allowed-users         = [ "falk" ];
@@ -26,6 +28,7 @@
    
   #programs.fish.enable = true;
    
+   # TODO: Consider moving into common/ instead?
    programs.nh = {
       enable = true;
       clean  = {
@@ -40,5 +43,11 @@
       wget
       git
       neovim 
+
+      tree
+      ripgrep
+      fd
+      eza
+      curl
    ];
 }

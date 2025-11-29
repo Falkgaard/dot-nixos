@@ -13,7 +13,7 @@ in
       isNormalUser = true;
       group        = "users";
       shell        = pkgs.fish;
-      packages     = with pkgs; []; # NOTE: Keep minimal; only system level stuff.
+      packages     = with pkgs; [ fish ]; # NOTE: Keep minimal; only system level stuff.
       extraGroups  = [ "wheel" ];   # TODO: Ideally, this should be set by a per-host function.
    };
 }
