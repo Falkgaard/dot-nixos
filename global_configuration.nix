@@ -16,7 +16,7 @@
    
    i18n.defaultLocale   = "en_IE.UTF-8";
    console.useXkbConfig = true;
-   console.keyMap       = "sv-latin1";
+  #console.keyMap       = "sv-latin1"; (TODO: Remove?)
    
    services.xserver = {
       autoRepeatDelay    = 250;
