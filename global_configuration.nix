@@ -14,11 +14,8 @@
    
    boot.kernelPackages = pkgs.linuxPackages_latest;
    
-   i18n.defaultLocale = "en_IE.UTF-8";
-   console = {
-      font         = "Lat2-Terminus16";
-      useXkbConfig = true;
-   };
+   i18n.defaultLocale   = "en_IE.UTF-8";
+   console.useXkbConfig = true;
    
    services.xserver = {
       autoRepeatDelay    = 250;
@@ -33,7 +30,7 @@
       enable = true;
       clean  = {
          enable    = true;
-         extraArgs = "--keep-since 7d --keep 20";
+         extraArgs = lib.mkDefault "--keep-since 7d --keep 20";
       };
    };
    

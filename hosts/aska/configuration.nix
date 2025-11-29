@@ -7,7 +7,6 @@
 
    boot = {
       kernelModules  = [ "btusb" "hidp" ];
-      kernelPackages = pkgs.linuxPackages_latest;
       loader = {
          efi = {
 	    canTouchEfiVariables = true;
@@ -70,18 +69,14 @@
 
    security.rtkit.enable = true;
    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
+      enable            = true;
+      alsa.enable       = true;
       alsa.support32Bit = true;
-      pulse.enable = true;
+      pulse.enable      = true;
    };
 
    time.timeZone = "Europe/Malta";
-   i18n.defaultLocale = "en_IE.UTF-8";
-   console = {
-      font = "Lat2-Terminus16";
-      useXkbConfig = true;
-   };
+   i18n.font = "Lat2-Terminus32";
   #console.keyMap = "sv-latin1";
 
    programs.fish.enable = true;
