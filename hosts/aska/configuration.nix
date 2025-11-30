@@ -98,6 +98,9 @@
       # Bluetooth:
       blueman # (GUI) `Bluetooth Manager`
       bluez   # (TUI) `bluetoothctl`
+      # Audio:
+      pamixer
+      pavucontrol
 
       picom               # NOTE: Needed by qtile.
       kdePackages.dolphin
