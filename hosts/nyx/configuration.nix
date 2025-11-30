@@ -110,8 +110,9 @@
    # };
    #############################################################################################
 
-   time.timeZone = "Europe/Malta";
-   console.font  = "Lat2-Terminus32";
+   time.timeZone      = "Europe/Malta";
+   console.font       = "Lat2-Terminus16";
+   console.earlySetup = true;
  
    programs.firefox.enable = true;
    programs.fish.enable    = true;

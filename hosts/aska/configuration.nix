@@ -13,7 +13,8 @@
 	    #efiSysMountPoint = "/boot/EFI";
          };
          systemd-boot = {
-            enable = true;
+            enable      = true;
+            consoleMode = "max";
 	 };
       };
    };
@@ -75,8 +76,9 @@
       pulse.enable      = true;
    };
 
-   time.timeZone = "Europe/Malta";
-   console.font  = "Lat2-Terminus32";
+   time.timeZone      = "Europe/Malta";
+   console.font       = "Lat2-Terminus16";
+   console.earlySetup = true;
 
    programs.fish.enable = true;
    programs.firefox.enable = true;
