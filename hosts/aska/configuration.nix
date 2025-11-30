@@ -1,7 +1,6 @@
 { pkgs, config, lib, ... }:
 {
    imports = [
-     #../../common/home-manager # NOTE: Doesn't seem to have any associated enable at the system level..?
       ../../common/stylix
    ];
 
@@ -21,7 +20,7 @@
 
    hardware = {
       graphics.enable = true;
-      #enable32Bit = true;
+      #enable32Bit    = true;
       nvidia = {
          open               = false;
 	 modesetting.enable = true;
@@ -93,14 +92,16 @@
 
    environment.systemPackages = with pkgs; [
       kitty
-      networkmanagerapplet
-      networkmanager # nmtui
-      blueman
-      bluez # bluetoothctl
+      # Network:
+      networkmanagerapplet # (GUI) 
+      networkmanager       # (TUI) `nmtui`
+      # Bluetooth:
+      blueman # (GUI) `Bluetooth Manager`
+      bluez   # (TUI) `bluetoothctl`
 
-      picom
+      picom               # NOTE: Needed by qtile.
       kdePackages.dolphin
-      kdePackages.qtsvg # NOTE: Needed for icons in Dolphin.
+      kdePackages.qtsvg   # NOTE: Needed for icons in Dolphin.
    ];
 
    fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
@@ -108,3 +109,12 @@
    system.stateVersion = "24.05"; # Do not edit.
 }
 
+# TODO: Make sure audio works.
+#       Niri + Wayland
+#       Krita, Blender, Libresprite (HM?)
+#       mpv, svp? (HM?)
+#       Dev shells (HM?)
+#       Steam? (HM?)
+#       .
+#       .
+#       .
