@@ -3,8 +3,8 @@
    imports = [
       ../../common/module/stylix
       ../../common/module/gui/dm/ly # NOTE: Technically a TUI...
-      ../../common/layer/x11-qtile
-      ../../common/layer/wl-niri
+      ../../common/layer/desktop/x11-qtile
+      ../../common/layer/desktop/wl-niri
    ];
 
    boot = {
