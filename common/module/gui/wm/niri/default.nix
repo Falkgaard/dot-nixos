@@ -1,7 +1,12 @@
 # This module enables the tiling window manager `niri`.
-{ pkgs, config, lib, ... }:
+{ pkgs, inputs, lib, ... }:
 {
+   imports               = [ inputs.niri.nixosModules.niri ];
+   nixpkgs.overlays      = [ inputs.niri.overlays.niri     ];
+   programs.niri.enable  = true;
+   programs.niri.package = pkgs.niri-stable;
    # TEMP stuff:
+   services.xserver.enable = true;
    programs.xwayland.enable = true; # UNSURE about this
    services.gnome.gnome-keyring.enable = true; # secret service
    security.polkit.enable              = true; # polkit
@@ -9,14 +14,12 @@
    programs.waybar.enable              = true;
    environment.systemPackages          = with pkgs; [
       xwayland-satellite # xwayland support
-      alacritty
       fuzzel
       swaylock
       mako
       swayidle
    ];
    
-   programs.niri.enable = true;
    # BAR:
    #    waybar|ironbar?
    # SHELL:

@@ -1,54 +1,56 @@
 # This module enables Stylix for the host machines that import it.
-{ pkgs, config, lib, ... }:
+{ pkgs, inputs, lib, ... }: #config, lib, ...
 {
-   stylix = lib.mkDefault {
+   imports = [ inputs.stylix.nixosModules.stylix ];
+   
+   stylix = {
       enable       = true;
       autoEnable   = true;
       
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+      base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
       
-      image        = ./default_wallpaper.png;
+      image        = lib.mkDefault ./default_wallpaper.png;
       
-      cursor = {
+      cursor = lib.mkDefault {
          name    = "Bibata-Modern-Classic"; # "Adwaita";
          package = pkgs.bibata-cursors;     # pkgs.adwaita-icon-theme;
-         size    = 36;                      # 14;
+         size    = lib.mkDefault 36;        # 14;
       };
       
-      fonts = {
-         serif = {
+      fonts = lib.mkDefault {
+         serif = lib.mkDefault {
             package = pkgs.dejavu_fonts;
             name    = "DejaVu Serif";
          };
          
-         sansSerif = {
+         sansSerif = lib.mkDefault {
             package = pkgs.dejavu_fonts;
             name    = "DejaVu Sans";
          };
          
-         monospace = {
+         monospace = lib.mkDefault {
             package = pkgs.nerd-fonts.jetbrains-mono;
             name    = "JetBrainsMono Nerd Font";
          };
          
-         emoji = {
+         emoji = lib.mkDefault {
             package = pkgs.noto-fonts-color-emoji;
             name    = "Noto Color Emoji";
          };
          
-         sizes = {
-            applications = 16;
-            desktop      = 16;
-            popups       = 16;
-            terminal     = 16;
+         sizes = lib.mkDefault {
+            applications = lib.mkDefault 16;
+            desktop      = lib.mkDefault 16;
+            popups       = lib.mkDefault 16;
+            terminal     = lib.mkDefault 16;
          };
       };
       
-      opacity = {
-         applications = 1.00;
-         desktop      = 1.00;
-         terminal     = 1.00;
-         popups       = 1.00;
+      opacity = lib.mkDefault {
+         applications = lib.mkDefault 1.00;
+         desktop      = lib.mkDefault 1.00;
+         terminal     = lib.mkDefault 1.00;
+         popups       = lib.mkDefault 1.00;
       };
    };
 }

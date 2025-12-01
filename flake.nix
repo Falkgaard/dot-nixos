@@ -9,11 +9,16 @@
       # Chosen NixOS release channel:
       nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
       
-      # # User home environment manager:
+      # # User home environment manager: (NOTE: Disabled since we use stand-alone HM.)
       # home-manager = {
       #    url                    = "github:nix-community/home-manager";
       #    inputs.nixpkgs.follows = "nixpkgs";
       # };
+
+      niri = {
+         url                    = "github:sodiboo/niri-flake";
+         inputs.nixpkgs.follows = "nixpkgs";
+      };
       
       # Theming framework:
       stylix = {
@@ -22,7 +27,7 @@
       };
    };
    
-   outputs = inputs@{ self, nixpkgs, /*home-manager,*/ stylix, ... }:
+   outputs = inputs@{ self, nixpkgs, /*home-manager,*/ stylix, niri, ... }:
    let
       # Get the list of hosts declared inside of `./hosts/`:
       hostnames = builtins.filter (dir: dir != ".") (builtins.attrNames (builtins.readDir ./hosts));
@@ -30,10 +35,8 @@
       # Custom nixosSystem wrapper function:
       mkNixosSystem = hostname: nixpkgs.lib.nixosSystem {
          #system = import ./hosts/${hostname}/system.nix; ?
+         specialArgs = { inherit inputs; }; # TODO: Why?
          modules = [
-	    # Adding flake input modules:
-	    # home-manager.nixosModules.home-manager
-	    stylix.nixosModules.stylix
             # Configuration shared by *all* hosts:
             ./global_configuration.nix 
             # Host-specific configuration:
