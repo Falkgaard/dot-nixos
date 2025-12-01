@@ -18,22 +18,22 @@
       };
       
       fonts = lib.mkDefault {
-         serif = lib.mkDefault {
+         serif = {
             package = pkgs.dejavu_fonts;
             name    = "DejaVu Serif";
          };
          
-         sansSerif = lib.mkDefault {
+         sansSerif = {
             package = pkgs.dejavu_fonts;
             name    = "DejaVu Sans";
          };
          
-         monospace = lib.mkDefault {
+         monospace = {
             package = pkgs.nerd-fonts.jetbrains-mono;
             name    = "JetBrainsMono Nerd Font";
          };
          
-         emoji = lib.mkDefault {
+         emoji = {
             package = pkgs.noto-fonts-color-emoji;
             name    = "Noto Color Emoji";
          };
