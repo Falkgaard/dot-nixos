@@ -1,11 +1,14 @@
 { pkgs, config, lib, ... }:
 {
    imports = [
-      ../../common/stylix
+      ../../common/module/stylix
+      ../../common/module/gui/dm/ly # NOTE: Technically a TUI...
+      ../../common/layer/x11-qtile
+      ../../common/layer/wl-niri
    ];
 
    boot = {
-      kernelModules  = [ "btusb" "hidp" ];
+      kernelModules = [ "btusb" "hidp" ];
       loader = {
          efi = {
 	    canTouchEfiVariables = true;
@@ -48,17 +51,10 @@
       networkmanager.enable = true;
    };
 
-   services = {
-      displayManager.ly = {
-         enable     = true;
-	 x11Support = true;
-      };
-      xserver = {
-         enable                     = true;
-	 windowManager.qtile.enable = true;
-	 xkb.layout                 = "se";
-	 videoDrivers               = [ "modesetting" "nvidia" ];
-      };
+   services.xserver = {
+      enable       = true;
+      xkb.layout   = "se";
+      videoDrivers = [ "modesetting" "nvidia" ];
    };
 
    environment.variables = {
@@ -79,7 +75,7 @@
    console.font       = "Lat2-Terminus16";
    console.earlySetup = true;
 
-   programs.fish.enable = true;
+   programs.fish.enable    = true;
    programs.firefox.enable = true;
 
    programs.nh = {
@@ -102,7 +98,6 @@
       pamixer
       pavucontrol
 
-      picom               # NOTE: Needed by qtile.
       kdePackages.dolphin
       kdePackages.qtsvg   # NOTE: Needed for icons in Dolphin.
    ];
@@ -113,9 +108,8 @@
 }
 
 # TODO: Make sure audio works.
-#       Niri + Wayland
-#       Krita, Blender, Libresprite (HM?)
-#       mpv, svp? (HM?)
+#       Niri + Wayland (WIP)
+#       svp? (HM?)
 #       Dev shells (HM?)
 #       Steam? (HM?)
 #       .
