@@ -6,8 +6,8 @@
    programs.niri.enable  = true;
    programs.niri.package = pkgs.niri-stable;
    # TEMP stuff:
-   services.xserver.enable = true;
-   programs.xwayland.enable = true; # UNSURE about this
+   services.xserver.enable  = true;
+  #programs.xwayland.enable = true; # UNSURE about this
    services.gnome.gnome-keyring.enable = true; # secret service
    security.polkit.enable              = true; # polkit
    security.pam.services.swaylock      = {};
@@ -15,9 +15,11 @@
    environment.systemPackages          = with pkgs; [
       xwayland-satellite # xwayland support
       fuzzel
+      swaybg
       swaylock
       mako
       swayidle
+      wl-clipboard
    ];
    
    # BAR:

@@ -22,8 +22,10 @@
    };
 
    hardware = {
-      graphics.enable = true;
-      #enable32Bit    = true;
+      graphics = {
+         enable      = true;
+         enable32Bit = true;
+      };
       nvidia = {
          open               = false;
 	 modesetting.enable = true;
@@ -34,12 +36,25 @@
          };
 	 package = config.boot.kernelPackages.nvidiaPackages.stable;
 	 prime = {
+            offload = {
+               enable           = true;
+               enableOffloadCmd = true; # Allows `nvidia-offload <foo>`
+            };
 	    # offload.enable = false;
 	    # sync.enable    = false;
 	    nvidiaBusId      = "PCI:0:1:0";
 	    intelBusId       = "PCI:0:0:2";
 	 };
       };
+   };
+
+   # TODO: Move into gaming module?
+   programs.steam.enable                  = true;
+   programs.steam.gamescopeSession.enable = true;
+   programs.gamemode = {
+      enable = true;
+      # settings
+      # enableRenice
    };
 
    hardware.bluetooth.enable = true;
@@ -72,8 +87,12 @@
    };
 
    time.timeZone      = "Europe/Malta";
-   console.font       = "Lat2-Terminus16";
+   # console.font       = "Lat3-Terminus16";
    console.earlySetup = true;
+   # i18n = {
+   #    consoleFont     = lib.mkForce "ter-i32b";
+   #    consolePackages = lib.mkForce [ pkgs.terminus_font ];
+   # };
 
    programs.fish.enable    = true;
    programs.firefox.enable = true;
